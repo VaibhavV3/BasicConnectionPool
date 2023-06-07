@@ -19,7 +19,7 @@ public class RedisConnectionPoolV2 implements Closeable {
     private RedisConnectionPoolV2(int capacity,String host, int port, String password){
         this.capacity = capacity;
         connectionPool = new ArrayBlockingQueue<RedisConnection>(capacity);
-        connectionCount = new AtomicInteger();
+        connectionCount = new AtomicInteger(capacity);
         createConnection(host, port, password);
     }
 

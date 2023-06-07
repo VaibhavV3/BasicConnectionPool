@@ -7,6 +7,7 @@ public class RedisConnector {
 //        RedisClient redisClient = new RedisClient(RedisURI.create("redis://admin123@localhost:6379"));
 //        RedisConnection<String, String> connection = redisClient.connect();
 
+        // Try with resources, closes connection of resources by itself.
         try(RedisConnectionPoolV2 connPool = RedisConnectionPoolV2.getBasicConnectionPool(10,"localhost",6379,"admin123")) {
 
             RedisConnection<String,String> connection = connPool.getConnection();
